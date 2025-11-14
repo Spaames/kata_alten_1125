@@ -1,0 +1,28 @@
+<h2 class="text-center mb-4">Mon panier</h2>
+<div *ngIf="cartItems.length === 0" class="p-3 text-center text-700">Votre panier est vide.</div>
+
+<div *ngIf="cartItems.length > 0" class="flex flex-column gap-4">
+  <div *ngFor="let item of cartItems" class="p-card p-component flex gap-4 items-center p-3" style="border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.07);">
+    <img *ngIf="item.product.image" [src]="item.product.image" alt="{{ item.product.name }}" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;" />
+    <div class="flex flex-column gap-1" style="flex: 1;">
+      <div class="font-medium text-lg">{{ item.product.name }}</div>
+      <div class="text-sm">Prix unitaire : <span class="font-bold">{{ item.product.price | currency:'EUR' }}</span></div>
+      <div class="text-sm">Total : <span class="font-bold">{{ (item.product.price * item.quantity) | currency:'EUR' }}</span></div>
+    </div>
+    <div class="flex gap-2 items-center">
+        <!-- Editing cart buttons -->
+        <button pButton type="button" icon="pi pi-minus" style="width: 2rem; height: 2rem;" (click)="remove(item.product.id)"></button>
+        <span style="min-width: 2rem; text-align: center; font-weight: bold; font-size: 1.1rem;">{{ item.quantity }}</span>
+        <button pButton type="button" icon="pi pi-plus" style="width: 2rem; height: 2rem;" (click)="add(item.product)"></button>
+        <button pButton type="button" icon="pi pi-trash" severity="danger" style="width: 2rem; height: 2rem;" (click)="delete(item.product.id)"></button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="cartItems.length > 0" class="mt-4 font-bold text-right" style="font-size: 1.2rem;">
+  Total général : {{ getTotal() | currency:'EUR' }}
+</div>
+
+<div *ngIf="cartItems.length > 0" class="text-right" style="margin-top: 1rem;">
+  <button pButton type="button" label="Vider le panier" severity="warning" (click)="clear()"></button>
+</div>

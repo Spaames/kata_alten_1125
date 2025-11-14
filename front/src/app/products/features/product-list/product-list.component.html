@@ -1,0 +1,65 @@
+<h1 class="text-center">Liste des produits</h1>
+
+<div class="flex items-center mb-3">
+    <div style="flex: 1;">
+        <!--Filter input-->
+        <input type="text" [(ngModel)]="filterText" placeholder="Rechercher un produit..." class="p-inputtext p-component" style="width: 300px;" />
+    </div>
+    <div>
+        <p-button label="Créer produit" (onClick)="onCreate()" class="block" />
+    </div>
+</div>
+
+<p-dataView #dv [value]="filteredProducts" [paginator]="true" [rows]="8" paginatorPosition="bottom">
+    <ng-template pTemplate="list" let-products>
+        @for (product of products; track product) {
+            <p-card class="block mb-2">
+                <div class="flex gap-4">
+                    <!--Displaying product data-->
+                    <img *ngIf="product.image" [src]="product.image" alt="{{ product.name }}" style="width: 120px; height: 120px; object-fit: cover;" />
+                    <div class="flex flex-column gap-1">
+                        <span class="font-medium text-secondary text-sm">{{ product.category }}</span>
+                        <div class="text-lg font-medium text-900 mt-2">{{ product.name }}</div>
+                        <div class="text-sm text-700">{{ product.description }}</div>
+                        <div class="text-sm mt-1">Prix : <span class="font-bold">{{ product.price | currency:'EUR' }}</span></div>
+                        <!-- Empty for now, but important information
+                        <div class="text-sm">Quantité disponible : <span class="font-bold">{{ product.quantity }}</span></div> 
+                        -->
+                        <div class="text-sm">Statut : <span [ngClass]="{
+                            'text-green-600': product.inventoryStatus === 'INSTOCK',
+                            'text-orange-600': product.inventoryStatus === 'LOWSTOCK',
+                            'text-red-600': product.inventoryStatus === 'OUTOFSTOCK'
+                        }">{{ product.inventoryStatus }}</span></div>
+                        <div class="text-sm">Note : <span class="font-bold">{{ product.rating }}/5</span></div>
+                        <!--
+                        Important but not for every user. Should be interesting for admins or people editing platform data. But no account logic rn.
+                        <div class="text-xs text-500">Réf. interne : {{ product.internalReference }}</div>
+                        <div class="text-xs text-500">ID Shell : {{ product.shellId }}</div>
+                        -->
+                        <div class="text-xs text-500">Créé le : {{ product.createdAt | date:'short' }}</div>
+                        <div class="text-xs text-500">Modifié le : {{ product.updatedAt | date:'short' }}</div>
+                    </div>
+                </div>
+                <ng-template pTemplate="footer">
+                    <div class="flex gap-3 mt-1">
+                        <!--Editing cart button-->
+                        <p-button label="Ajouter au panier" severity="success" (onClick)="addToCart(product)" />
+                        <p-button label="Supprimer du panier" severity="warning" (onClick)="removeFromCart(product)" />
+                        <p-button label="Modifier" severity="secondary" (onClick)="onUpdate(product)"/>
+                        <p-button label="Supprimer" severity="danger" (onClick)="onDelete(product)" />
+                    </div>
+                </ng-template>
+            </p-card>
+        }
+    </ng-template>
+</p-dataView>
+
+<p-dialog [(visible)]="isDialogVisible"
+    [style]="{ width: '50vw' }"
+    header="Ajout/Edition produit">
+    <app-product-form
+        [product]="editedProduct()"
+        (save)="onSave($event)"
+        (cancel)="onCancel()"
+    />
+</p-dialog>
