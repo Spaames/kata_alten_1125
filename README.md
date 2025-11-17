@@ -68,6 +68,12 @@ class Product {
 
 Le back-end créé doit pouvoir gérer les produits dans une base de données SQL/NoSQL ou dans un fichier json.
 
+- [x] GETALL
+- [x] GETONE
+- [x] POST
+- [x] PUT
+- [x] DELETE
+
 ### Partie 2
 
 -  [ ] Imposer à l'utilisateur de se connecter pour accéder à l'API.

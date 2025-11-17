@@ -1,0 +1,16 @@
+[ {
+  "id" : 1,
+  "code" : "P1000",
+  "name" : "Produit Modifié",
+  "description" : "Produit mis à jour",
+  "image" : "https://example.com/new-img.png",
+  "category" : "Updated",
+  "price" : 29.99,
+  "quantity" : 15,
+  "internalReference" : "REF123U",
+  "shellId" : 3,
+  "inventoryStatus" : "LOWSTOCK",
+  "rating" : 5,
+  "createdAt" : 1763377422874,
+  "updatedAt" : 1763377436307
+} ]
