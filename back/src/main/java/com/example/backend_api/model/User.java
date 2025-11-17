@@ -1,0 +1,11 @@
+package com.example.backend_api.model;
+
+import lombok.Data;
+
+@Data
+public class User {
+    private String username;
+    private String firstname;
+    private String email;
+    private String password; // will be hashed
+}

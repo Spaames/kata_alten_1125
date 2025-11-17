@@ -13,4 +13,34 @@
   "rating" : 5,
   "createdAt" : 1763377422874,
   "updatedAt" : 1763377436307
+}, {
+  "id" : 2,
+  "code" : "P1000",
+  "name" : "Test Product 2",
+  "description" : "Un produit de test",
+  "image" : "https://example.com/img.png",
+  "category" : "General",
+  "price" : 19.99,
+  "quantity" : 20,
+  "internalReference" : "REF123",
+  "shellId" : 2,
+  "inventoryStatus" : "INSTOCK",
+  "rating" : 4,
+  "createdAt" : 1763390112546,
+  "updatedAt" : 1763390112546
+}, {
+  "id" : 3,
+  "code" : null,
+  "name" : "Test",
+  "description" : null,
+  "image" : null,
+  "category" : null,
+  "price" : 0.0,
+  "quantity" : 0,
+  "internalReference" : null,
+  "shellId" : 0,
+  "inventoryStatus" : null,
+  "rating" : 0,
+  "createdAt" : 1763392755444,
+  "updatedAt" : 1763392755444
 } ]

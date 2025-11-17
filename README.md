@@ -76,7 +76,7 @@ Le back-end créé doit pouvoir gérer les produits dans une base de données SQ
 
 ### Partie 2
 
--  [ ] Imposer à l'utilisateur de se connecter pour accéder à l'API.
+-  [x] Imposer à l'utilisateur de se connecter pour accéder à l'API.
   La connexion doit être gérée en utilisant un token JWT.  
   Deux routes devront être créées :
   * [POST] /account -> Permet de créer un nouveau compte pour un utilisateur avec les informations fournies par la requête.   
@@ -98,10 +98,10 @@ Le back-end créé doit pouvoir gérer les produits dans une base de données SQ
     }
     ```
     Une vérification devra être effectuée parmi tout les utilisateurs de l'application afin de connecter celui qui correspond aux infos fournies. Un token JWT sera renvoyé en retour de la reqûete.
-- [ ] Faire en sorte que seul l'utilisateur ayant le mail "admin@admin.com" puisse ajouter, modifier ou supprimer des produits. Une solution simple et générique devra être utilisée. Il n'est pas nécessaire de mettre en place une gestion des accès basée sur les rôles.
-- [ ] Ajouter la possibilité pour un utilisateur de gérer un panier d'achat pouvant contenir des produits.
-- [ ] Ajouter la possibilité pour un utilisateur de gérer une liste d'envie pouvant contenir des produits.
+- [x] Faire en sorte que seul l'utilisateur ayant le mail "admin@admin.com" puisse ajouter, modifier ou supprimer des produits. Une solution simple et générique devra être utilisée. Il n'est pas nécessaire de mettre en place une gestion des accès basée sur les rôles.
+- [x] Ajouter la possibilité pour un utilisateur de gérer un panier d'achat pouvant contenir des produits.
+- [x] Ajouter la possibilité pour un utilisateur de gérer une liste d'envie pouvant contenir des produits.
 
 ## Bonus
 
-- [ ] Vous pouvez ajouter des tests Postman ou Swagger pour valider votre API
+- [x] Vous pouvez ajouter des tests Postman ou Swagger pour valider votre API -> http://localhost:8080/swagger-ui/index.html
